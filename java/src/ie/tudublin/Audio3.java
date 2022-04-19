@@ -47,7 +47,7 @@ public class Audio3 extends PApplet
         // Uncomment this to use the microphone
         // ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
         // ab = ai.mix; 
-        ap = minim.loadFile("Sandstorm.wav", 1024);
+        ap = minim.loadFile("darude.wav", 1024);
         ap.play();
         ab = ap.mix;
         colorMode(HSB);
