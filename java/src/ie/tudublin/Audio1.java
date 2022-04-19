@@ -36,8 +36,8 @@ public class Audio1 extends PApplet
 
     public void settings()
     {
-        //size(1024, 1000, P3D);
-        fullScreen(P3D, SPAN);
+        size(1024, 1000, P3D);
+        //fullScreen(P3D, SPAN);
     }
 
     public void setup()
@@ -63,6 +63,7 @@ public class Audio1 extends PApplet
     {
         //background(0);
         float halfH = height / 2;
+        float halfY = width / 2;
         float average = 0;
         float sum = 0;
         off += 1;
@@ -86,7 +87,7 @@ public class Audio1 extends PApplet
                 for(int i = 0 ; i < ab.size() ; i ++)
                 {
                     //float c = map(ab.get(i), -1, 1, 0, 255);
-                    float c = map(i, 0, ab.size(), 0, 255);
+                    float c = map(i, 0, ab.size(), 0, 150);
                     stroke(c, 255, 255);
                     float f = lerpedBuffer[i] * halfH * 4.0f;
                     line(i, halfH + f, i, halfH - f);                    
@@ -131,12 +132,15 @@ public class Audio1 extends PApplet
         case 3:
             {
             background(0);
-            strokeWeight(2);
+            strokeWeight(10);
             noFill();
             float r = map(smoothedAmplitude, 0, 0.5f, 100, 2000);
             float c = map(smoothedAmplitude, 0, 0.5f, 0, 255);
+            float b = map(smoothedAmplitude, 0, 0.5f, 100, 255);
             stroke(c, 255, 255);
             circle(cx, cy, r);
+            stroke(0, 0, b);
+            circle(cx, cy, r/2);
             }
             break;
         case 4:
@@ -153,6 +157,19 @@ public class Audio1 extends PApplet
                 fill(cc);
                 circle(i, halfH + f, 5);                    
                 circle(i, halfH - f, 5);                    
+            }
+            break;
+
+        case 5:
+        
+            background(0);
+            
+            for(int i = 0 ; i < 20 ; i +=1)
+            {
+                rotate(i);
+                noFill();
+                translate(halfH, halfY, 0);
+                box(50);                    
             }
             break;
 

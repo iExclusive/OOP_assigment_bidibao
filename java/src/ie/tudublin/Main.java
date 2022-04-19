@@ -24,7 +24,7 @@ public class Main
     
     public static void main(String[] args)
     {
-        audio3();
+        audio1();
         
     }
 }
