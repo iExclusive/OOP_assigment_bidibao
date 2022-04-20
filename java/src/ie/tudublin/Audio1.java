@@ -88,6 +88,7 @@ public class Audio1 extends PApplet
                 {
                     //float c = map(ab.get(i), -1, 1, 0, 255);
                     float c = map(i, 0, ab.size(), 0, 150);
+                    strokeWeight(2);
                     stroke(c, 255, 255);
                     float f = lerpedBuffer[i] * halfH * 4.0f;
                     line(i, halfH + f, i, halfH - f);                    
@@ -98,6 +99,7 @@ public class Audio1 extends PApplet
             for(int i = 0 ; i < ab.size() ; i ++)
             {
                 //float c = map(ab.get(i), -1, 1, 0, 255);
+                strokeWeight(2);
                 float c = map(i, 0, ab.size(), 0, 255);
                 stroke(c, 255, 255);
                 float f = lerpedBuffer[i] * halfH * 4.0f;
@@ -108,6 +110,7 @@ public class Audio1 extends PApplet
             {
                     float c = map(smoothedAmplitude, 0, 0.5f, 0, 255);
                     background(0, 0, 0, 10);
+                    strokeWeight(2);
                     stroke(c, 255, 255);	
                     float radius = map(smoothedAmplitude, 0, 0.1f, 50, 300);		
                     int points = (int)map(mouseX, 0, 255, 3, 10);
@@ -168,7 +171,7 @@ public class Audio1 extends PApplet
             {
                 rotate(i);
                 noFill();
-                translate(halfH, halfY, 0);
+                translate(halfH + i, halfY, 0);
                 box(50);                    
             }
             break;
