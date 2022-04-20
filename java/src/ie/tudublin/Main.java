@@ -21,6 +21,13 @@ public class Main
 		String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Audio3());
     }
+
+    public static void star()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new Star());
+    }
+
     
     public static void main(String[] args)
     {

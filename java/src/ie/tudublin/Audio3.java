@@ -34,6 +34,9 @@ public class Audio3 extends PApplet
             }
         }
 	}
+            int unit = 40;
+        int count;
+        Module[] mods;
 
     public void settings()
     {
@@ -56,7 +59,8 @@ public class Audio3 extends PApplet
         smoothedY = y;
 
         lerpedBuffer = new float[width];
-    }
+      }
+    
 
     float off = 0;
 
@@ -80,7 +84,6 @@ public class Audio3 extends PApplet
         
         float cx = width / 2;
         float cy = height / 2;
-
 
 
         switch (mode) {
@@ -112,22 +115,39 @@ public class Audio3 extends PApplet
             {
                 //float c = map(ab.get(i), -1, 1, 0, 255);
                 float c = map(i, 0, ab.size(), 0, 255);
-                stroke(c, 255, 255);
+                stroke(c, 10, 100); //sets up the color
                 float f = lerpedBuffer[i] * 5.0f * halfH;
                 noFill();
                 translate(cx, cy, 0);
                 box(f);                 
             }
             break;
+            //not bad
         case 3:
             background(0);
+            float lastAngle = 0;
+            for (int i = 0; i < ab.size(); i++) {
+              float c = map(i, 0, ab.size(), 0, 255);
+              stroke(c, 255, 255); //sets up the color
+              float f = lerpedBuffer[i] * halfH * 10.0f; //makes the cirlce bigger
+              arc(width/2, height/2, f, f, lastAngle, lastAngle+radians(height));
+              lastAngle += radians(lerpedBuffer[i]);
 
-            
+            }
             break;
-
-        case 4:
         
-            background(0);
+        case 4:
+        background(0);
+        for(int i = 0 ; i < ab.size() ; i ++)
+        {
+            float c = map(ab.get(i), -1, 1, 0, 255);
+            stroke(c, 255, 255);
+            float f = lerpedBuffer[i] * halfH * 4.0f;
+
+
+            rect(f--, f--, i--, i--);
+            
+        }
                   
             break;
             case 5:
@@ -145,6 +165,7 @@ public class Audio3 extends PApplet
                 circle(i, halfH - f, 100);                   
             }
             break;
+            // the good one ye
             case 6:
             background(0);
             float radius = map(smoothedAmplitude, 0, 0.1f, 50, 300);		
@@ -175,9 +196,7 @@ public class Audio3 extends PApplet
                 //float g = map(i, 0, ab.size(), 0, 255);
                 stroke(g, 255, 255);
                 float f = lerpedBuffer[i] * halfH * 10.0f;
-                //line(halfH + f, halfH - f, i++, i++);
-                  
-                circle(halfH--, halfH++, f);               
+                
             }
             break;
             case 8:
@@ -200,8 +219,8 @@ public class Audio3 extends PApplet
 
                 float u = map(ab.get(i), -1, 1, 0, 255);
                 stroke(u, 100, 255);
-                float f = lerpedBuffer[i] + halfH + 100.0f;
-                line(f--, f*3, i*3, i*3);
+                float f = lerpedBuffer[i] + halfH + 4.0f;
+
             }
             break;
 
@@ -209,5 +228,11 @@ public class Audio3 extends PApplet
         }
         
 
+    }
+
+    private void random(Object rect) {
+    }
+
+    private void randomSeed(Object rect) {
     }        
 }
