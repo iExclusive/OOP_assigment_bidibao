@@ -129,7 +129,7 @@ public class Audio3 extends PApplet
             for (int i = 0; i < ab.size(); i++) {
               float c = map(i, 0, ab.size(), 0, 255);
               stroke(c, 255, 255); //sets up the color
-              float f = lerpedBuffer[i] * halfH * 10.0f; //makes the cirlce bigger
+              float f = lerpedBuffer[i] * halfH * 6.0f; //makes the cirlce bigger
               arc(width/2, height/2, f, f, lastAngle, lastAngle+radians(height));
               lastAngle += radians(lerpedBuffer[i]);
 
@@ -167,7 +167,7 @@ public class Audio3 extends PApplet
             break;
             // the good one ye
             case 6:
-            background(0);
+            background(255);
             float radius = map(smoothedAmplitude, 0, 0.1f, 50, 300);		
             int points = (int)map(mouseX, 0, 255, 3, 10);
             int sides = points * 2;
@@ -220,6 +220,7 @@ public class Audio3 extends PApplet
                 float u = map(ab.get(i), -1, 1, 0, 255);
                 stroke(u, 100, 255);
                 float f = lerpedBuffer[i] + halfH + 4.0f;
+                rect(f, f, f, f);
 
             }
             break;
@@ -228,11 +229,5 @@ public class Audio3 extends PApplet
         }
         
 
-    }
-
-    private void random(Object rect) {
-    }
-
-    private void randomSeed(Object rect) {
-    }        
+    }  
 }
